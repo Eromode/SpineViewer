@@ -1,9 +1,9 @@
 name: Build SpineViewer APK
 
 on:
-  workflow_dispatch:  # Allows you to run this manually from the Actions tab
+  workflow_dispatch:
   push:
-    branches: [ main, master ] # Runs automatically on push to main/master
+    branches: [ main, master ]
 
 jobs:
   build:
@@ -22,6 +22,8 @@ jobs:
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
+      with:
+        packages: ''   # ← This line fixes the error
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
